@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
+.title {
+    margin-left: 15px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 36px;
+}
+
+
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+}
+
+.links {
+    margin: 0 auto;
+}
+
+.links > :first-child {
+    margin-right: 15px; 
+}
