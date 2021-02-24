@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppNewQuizComponent } from './app-new-quiz/app-new-quiz.component';
-import { AppHighscoresComponent } from './app-highscores/app-highscores.component';
-import { AppPageNotFoundComponent } from './app-page-not-found/app-page-not-found.component';
+import { NewQuizComponent } from './new-quiz/new-quiz.component';
+import { HighscoresComponent } from './highscores/highscores.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [{
-  path: 'new-quiz', component: AppNewQuizComponent
+  path: 'new-quiz', component: NewQuizComponent
 },
 {
   path: '', redirectTo: '/new-quiz', pathMatch: 'full'
 },
 {
-  path: 'highscores', component: AppHighscoresComponent
+  path: 'highscores', component: HighscoresComponent
 },
 {
-  path: '**', component: AppPageNotFoundComponent
+  path: '**', component: PageNotFoundComponent
 }];
 
 @NgModule({

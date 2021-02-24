@@ -4,16 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppNewQuizComponent } from './app-new-quiz/app-new-quiz.component';
-import { AppHighscoresComponent } from './app-highscores/app-highscores.component';
-import { AppPageNotFoundComponent } from './app-page-not-found/app-page-not-found.component';
+import { NewQuizComponent } from './new-quiz/new-quiz.component';
+import { HighscoresComponent } from './highscores/highscores.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuizFormComponent } from './quiz-form/quiz-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNewQuizComponent,
-    AppHighscoresComponent,
-    AppPageNotFoundComponent
+    NewQuizComponent,
+    HighscoresComponent,
+    PageNotFoundComponent,
+    QuizFormComponent
   ],
   imports: [
     BrowserModule,

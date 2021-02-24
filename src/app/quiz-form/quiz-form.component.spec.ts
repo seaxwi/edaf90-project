@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppPageNotFoundComponent } from './app-page-not-found.component';
+import { QuizFormComponent } from './quiz-form.component';
 
-describe('AppPageNotFoundComponent', () => {
-  let component: AppPageNotFoundComponent;
-  let fixture: ComponentFixture<AppPageNotFoundComponent>;
+describe('QuizFormComponent', () => {
+  let component: QuizFormComponent;
+  let fixture: ComponentFixture<QuizFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppPageNotFoundComponent ]
+      declarations: [ QuizFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppPageNotFoundComponent);
+    fixture = TestBed.createComponent(QuizFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
