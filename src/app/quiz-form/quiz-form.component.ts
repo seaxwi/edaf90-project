@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Quiz } from './quiz';
 
@@ -9,15 +10,11 @@ import { Quiz } from './quiz';
 })
 export class QuizFormComponent implements OnInit {
 
-  categories = [
-    'Any Category', 'General Knowledge', 'Entertainment: Books',
-    'Entertainment: Film', 'Entertainment: Music', 'Entertainment: Musicals & Theatres',
-    'Entertainment: Television', 'Entertainment: Video Games', 'Entertainment: Board Games',
-    'Science & Nature', 'Science: Computers', 'Science: Mathematics',
-    'Mythology', 'Sports', 'Geography',
-    'History', 'Politics', 'Art',
-    'Celebrities', 'Animals'
-  ];
+  constructor(private http: HttpClient) {}
+
+  idcategories = new Map();
+
+  categories = [];
 
   difficulties = [
     'Any Difficulty', 'Easy',
@@ -27,13 +24,33 @@ export class QuizFormComponent implements OnInit {
   types = [
     'Any Type', 'Multiple Choice', 'True / False'
   ];
-
-  model = new Quiz(10, this.categories[0], this.difficulties[0], this.types[0]);
+  model = new Quiz(10, "Any Category", this.difficulties[0], this.types[0]);
   submitted = false;
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    this.submitted = true;
+    let url = "https://opentdb.com/api.php?";
+    url += "amount=" + this.model.nbrQuestions;
+    if(this.model.category !== "Any Category"){
+      url += "&category=" + this.idcategories.get(this.model.category);
+    }
+    if(this.model.difficulty !== "Any Difficulty"){
+      url += "&difficulty=" + this.model.difficulty.toLowerCase();
+    }
+    if(this.model.type !== "Any Type"){
+      url += "&type=";
+      if(this.model.type = "Multiple Choice") url += "multiple";
+      else if(this.model.type = "True / False") url += "boolean";
+    }
+    alert(url);
+  }
 
   ngOnInit(): void {
-
+    this.http.get<any>("https://opentdb.com/api_category.php").subscribe(result => {
+      result["trivia_categories"].forEach((elem) => this.idcategories.set(elem.name, elem.id));
+      this.categories.push("Any Category");
+      this.idcategories.forEach((key, value) => this.categories.push(value));
+      this.model.category = this.categories[0];
+    });
   }
 
 }

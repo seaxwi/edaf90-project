@@ -1,5 +1,5 @@
 <div [hidden]="submitted">
-  <form (ngSubmit)="onSubmit()" #quizForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #quizForm="ngForm"> <!-- TODO! INPUT VALIDATION ON NUMBER (MUST BE BETWEEN 1 AND 50)-->
     <div class="form-group">
       <label for="categories">Select Category</label>
       <input type="number"
@@ -49,9 +49,15 @@
 
 <div [hidden]="!submitted">
   <h1>You created a quiz!</h1>
-  <h3>These are your settings</h3>
+  <h3>These are your settings:</h3>
   <p>Number of questions: {{model.nbrQuestions}}</p>
   <p>Category: {{model.category}}</p>
   <p>Difficulty: {{model.difficulty}}</p>
   <p>Type: {{model.type}}</p>
+
+  
+
+  <label class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
+    Start quiz
+  </label>
 </div>
