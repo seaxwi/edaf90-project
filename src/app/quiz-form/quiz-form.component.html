@@ -1,4 +1,4 @@
-<div [hidden]="submitted">
+<div class="quiz-form-container" [hidden]="submitted">
   <form (ngSubmit)="onSubmit()" #quizForm="ngForm"> <!-- TODO! INPUT VALIDATION ON NUMBER (MUST BE BETWEEN 1 AND 50)-->
     <div class="form-group">
       <label for="categories">Number of Questions</label>
@@ -47,12 +47,12 @@
         <option *ngFor="let type of types" [value]="type">{{type}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="sumbit-btn btn btn-success">Submit</button>
   </form>
 </div>
 
 
-<div [hidden]="!submitted">
+<div class="new-quiz-container" [hidden]="!submitted">
   <h1>You created a quiz!</h1>
   <h3>These are your settings:</h3>
   <p>Number of questions: {{model.nbrQuestions}}</p>
@@ -60,10 +60,12 @@
   <p>Difficulty: {{model.difficulty}}</p>
   <p>Type: {{model.type}}</p>
 
-  <label (click)="revertChanges()" class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
-    Change settings
-  </label>
-  <label class="btn btn-success"> <!-- TODO ROUTING TO QUIZ-->
-    Start quiz
-  </label>
+  <div class="button-container">
+    <label (click)="revertChanges()" class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
+      Change settings
+    </label>
+    <label class="btn btn-success"> <!-- TODO ROUTING TO QUIZ-->
+      Start quiz
+    </label>
+  </div>
 </div>
