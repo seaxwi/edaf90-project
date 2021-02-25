@@ -1,7 +1,7 @@
 <div [hidden]="submitted">
   <form (ngSubmit)="onSubmit()" #quizForm="ngForm"> <!-- TODO! INPUT VALIDATION ON NUMBER (MUST BE BETWEEN 1 AND 50)-->
     <div class="form-group">
-      <label for="categories">Select Category</label>
+      <label for="categories">Number of Questions</label>
       <input type="number"
         min="1"
         class="form-control"
