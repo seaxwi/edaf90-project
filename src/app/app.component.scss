@@ -7,12 +7,15 @@
     font-size: 36px;
 }
 
+.main {
+    padding: 2em;
+}
 
 .spacer {
     flex: 1;
 }
 
-.toolbar {
+.navbar {
     height: 64px;
     display: flex;
     align-items: center;
@@ -21,10 +24,20 @@
     font-weight: 600;
 }
 
-.toolbar-link {
+.navbar-link {
     color: white;
 }
 
+.flex-container {
+    display: flex;
+    padding: 1em;
+}
+
+.flex-item {
+    padding: 1em;
+}
+
+/*
 .links {
     margin: 0 auto;
 }
@@ -32,3 +45,4 @@
 .links > :first-child {
     margin-right: 15px; 
 }
+*/
