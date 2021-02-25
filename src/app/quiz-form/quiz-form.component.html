@@ -11,6 +11,10 @@
       >
     </div>
 
+    <div [hidden]="!badInput()">
+      Bad input
+    </div>
+
     <div class="form-group">
       <label for="categories">Select Category</label>
       <select class="form-control"
@@ -47,6 +51,7 @@
   </form>
 </div>
 
+
 <div [hidden]="!submitted">
   <h1>You created a quiz!</h1>
   <h3>These are your settings:</h3>
@@ -55,9 +60,10 @@
   <p>Difficulty: {{model.difficulty}}</p>
   <p>Type: {{model.type}}</p>
 
-  
-
-  <label class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
+  <label (click)="revertChanges()" class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
+    Change settings
+  </label>
+  <label class="btn btn-success"> <!-- TODO ROUTING TO QUIZ-->
     Start quiz
   </label>
 </div>
