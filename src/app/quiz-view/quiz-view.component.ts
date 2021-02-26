@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Quiz } from '../quiz-form/quiz';
+import { QuizForm } from '../quiz-form/quiz-form';
 import { QuizMessageService } from '../quiz-message.service';
 import { filter } from 'minimatch';
 import { PresentQuestion } from './presentQuestion';
@@ -15,7 +15,7 @@ export class QuizViewComponent implements OnInit {
 
   constructor(private http: HttpClient, private service : QuizMessageService) { }
 
-  private quiz = new Quiz(0,"","","");
+  private quiz = new QuizForm(0,"","","");
   presentQuestions = [];                //presentQuestions används för att smidigare rendera frågor och svarsalternativ, här vet vi inte vad som är rätt och fel svar
   questions = [];                       //questions är datan vi fetchar, vi kan hålla koll på all information kring frågan här¨
   currentQuestionId = 0;
@@ -28,7 +28,7 @@ export class QuizViewComponent implements OnInit {
   submitAnswer(selectedAnswer: String){
     console.log( ` You selected ${selectedAnswer} which is ${this.questions[this.currentQuestionId].correct_answer === selectedAnswer? "correct": "incorrect"}`)
     this.currentQuestionId+=1
-    
+
     if(this.currentQuestionId === this.quiz.nbrQuestions){
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
@@ -44,10 +44,10 @@ export class QuizViewComponent implements OnInit {
       this.presentQuestions = fetchedData.results.map(q => new PresentQuestion(q.question, q.correct_answer, q.incorrect_answers, this.idCounter++));
       console.log(this.presentQuestions);
     });
-   
+
   }
 
   idCounter = 0;
-  
+
 
 }
