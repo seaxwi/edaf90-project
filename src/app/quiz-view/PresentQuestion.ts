@@ -1,17 +1,25 @@
 
 export class PresentQuestion{
 
-    public answers : String [];
+    public answers : string[];
 
     constructor(
-        public question : String,
-        correctAnswer : String,
-        incorrectAnswers : String [],
-        public id : Number
+        public question : string,
+        correctAnswer : string,
+        incorrectAnswers : string[],
+        public id : number
     ){
-        //TODO: Algorithm för att slumpa var vi lägger det rätta svaret
-        this.answers = [...incorrectAnswers, correctAnswer].sort(() => Math.random() - 0.5)
+        this.answers = [...incorrectAnswers, correctAnswer];
+        this.shuffle(this.answers);
     }
 
-
+    private shuffle(string[] list) {
+        for (var i = 0; i < list.length; i++) {
+            var j = Math.floor(Math.random() * list.length);
+            
+            var temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+    }
 }
