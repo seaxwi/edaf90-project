@@ -1,17 +1,16 @@
 
 export class PresentQuestion{
 
-    public answers : [String];
+    public answers : String [];
 
     constructor(
         public question : String,
         correctAnswer : String,
-        incorrectAnswers : [String],
+        incorrectAnswers : String [],
         public id : Number
     ){
         //TODO: Algorithm för att slumpa var vi lägger det rätta svaret
-        incorrectAnswers.push(correctAnswer);
-        this.answers = incorrectAnswers;
+        this.answers = [...incorrectAnswers, correctAnswer].sort(() => Math.random() - 0.5)
     }
 
 

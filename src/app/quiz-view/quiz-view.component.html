@@ -1,4 +1,4 @@
-<div *ngFor = "let question of presentQuestions">
+<div class = "question-container" *ngFor = "let question of presentQuestions">
     <div [hidden] = "shouldShow(question.id)" >
         <h3>{{question.question}}</h3>
         <div class = "button-container" *ngFor = "let answer of question.answers">
