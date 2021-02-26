@@ -1,7 +1,7 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Quiz } from './quiz';
+import { QuizForm } from './quiz-form';
 import { QuizMessageService } from '../quiz-message.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class QuizFormComponent implements OnInit {
   constructor(private http: HttpClient, private service: QuizMessageService) {}
 
   idcategories = new Map();
-  categories = [];
+  categories = ["Any Category"];
   difficulties = [
     'Any Difficulty', 'Easy',
     'Medium', 'Hard'
@@ -23,11 +23,11 @@ export class QuizFormComponent implements OnInit {
     'Any Type', 'Multiple Choice', 'True / False'
   ];
 
-  model = new Quiz(10, "Any Category", this.difficulties[0], this.types[0]);
+  model = new QuizForm(10, this.categories[0], this.difficulties[0], this.types[0]);
   submitted = false;
 
   onSubmit() {
-    
+
     if (!this.badInput()) {
       this.submitted = true;
       let url = "https://opentdb.com/api.php?";
@@ -60,7 +60,6 @@ export class QuizFormComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<any>("https://opentdb.com/api_category.php").subscribe(result => {
       result["trivia_categories"].forEach((elem) => this.idcategories.set(elem.name, elem.id));
-      this.categories.push("Any Category");
       this.idcategories.forEach((key, value) => this.categories.push(value));
       this.model.category = this.categories[0];
     });

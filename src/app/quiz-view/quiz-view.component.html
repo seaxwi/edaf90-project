@@ -1,8 +1,8 @@
-<div *ngFor = "let question of presentQuestions">
-    <div [hidden] = "shouldShow(question.id)" >
-        <h3>{{question.question}}</h3>
+<div class = "question-container" *ngFor = "let question of presentQuestions">
+    <div [hidden] = "shouldShow(question.id)">
+        <h3 [innerHTML]="question.question"></h3>
         <div class = "button-container" *ngFor = "let answer of question.answers">
-            <label (click)="submitAnswer(answer)" class = "btn btn-primary" >{{answer}}</label>
+            <label (click)="submitAnswer(answer)" class = "btn btn-primary"[innerHTML]="answer"></label>
         </div>
     </div>
 </div>
