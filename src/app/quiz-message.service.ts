@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Quiz } from './quiz-form/quiz';
+import { QuizForm } from './quiz-form/quiz-form';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,10 @@ import { Quiz } from './quiz-form/quiz';
 export class QuizMessageService {
 
 
-  private quiz = new Quiz(0,"","","");
-  quiz$ = new BehaviorSubject<Quiz>(this.quiz);
+  private quiz = new QuizForm(0,"","","");
+  quiz$ = new BehaviorSubject<QuizForm>(this.quiz);
 
-  setQuiz(quiz: Quiz){
+  setQuiz(quiz: QuizForm){
     this.quiz$.next(quiz);
   }
 

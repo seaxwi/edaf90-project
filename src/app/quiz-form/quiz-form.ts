@@ -1,4 +1,4 @@
-export class Quiz {
+export class QuizForm {
 
   constructor(
     public nbrQuestions : number,
