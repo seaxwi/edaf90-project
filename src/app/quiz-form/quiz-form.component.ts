@@ -2,6 +2,7 @@ import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Quiz } from './quiz';
+import { QuizMessageService } from '../quiz-message.service';
 
 @Component({
   selector: 'app-quiz-form',
@@ -10,7 +11,7 @@ import { Quiz } from './quiz';
 })
 export class QuizFormComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private service: QuizMessageService) {}
 
   idcategories = new Map();
   categories = [];
@@ -26,6 +27,7 @@ export class QuizFormComponent implements OnInit {
   submitted = false;
 
   onSubmit() {
+    
     if (!this.badInput()) {
       this.submitted = true;
       let url = "https://opentdb.com/api.php?";
@@ -38,12 +40,12 @@ export class QuizFormComponent implements OnInit {
       }
       if(this.model.type !== "Any Type"){
         url += "&type=";
-        if(this.model.type = "Multiple Choice") url += "multiple";
-        else if(this.model.type = "True / False") url += "boolean";
+        if(this.model.type === "Multiple Choice") url += "multiple";
+        else if(this.model.type === "True / False") url += "boolean";
+
       }
       this.model.url = url;
-      alert(this.model.url);
-      //TODO: Replace with adding to service.
+      this.service.setQuiz(this.model);
     }
   }
 

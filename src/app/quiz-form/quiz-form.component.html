@@ -47,7 +47,7 @@
         <option *ngFor="let type of types" [value]="type">{{type}}</option>
       </select>
     </div>
-    <button type="submit" class="sumbit-btn btn btn-success">Submit</button>
+    <button type="submit" class="submit-btn btn btn-success">Submit</button>
   </form>
 </div>
 
@@ -64,7 +64,7 @@
     <label (click)="revertChanges()" class="btn btn-primary"> <!-- TODO ROUTING TO QUIZ-->
       Change settings
     </label>
-    <label class="btn btn-success"> <!-- TODO ROUTING TO QUIZ-->
+    <label routerLink = '/quiz-view' class="btn btn-success"> <!-- TODO ROUTING TO QUIZ-->
       Start quiz
     </label>
   </div>

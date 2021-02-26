@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuizViewComponent } from './quiz-view/quiz-view.component'
+
 
 const routes: Routes = [{
   path: 'new-quiz', component: NewQuizComponent
+},
+{
+  path: 'quiz-view', component: QuizViewComponent
 },
 {
   path: '', redirectTo: '/new-quiz', pathMatch: 'full'

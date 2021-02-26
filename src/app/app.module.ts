@@ -10,6 +10,8 @@ import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
+import { QuizViewComponent } from './quiz-view/quiz-view.component';
+import { QuizMessageService } from './quiz-message.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { QuizFormComponent } from './quiz-form/quiz-form.component';
     NewQuizComponent,
     HighscoresComponent,
     PageNotFoundComponent,
-    QuizFormComponent
+    QuizFormComponent,
+    QuizViewComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { QuizFormComponent } from './quiz-form/quiz-form.component';
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [QuizMessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
