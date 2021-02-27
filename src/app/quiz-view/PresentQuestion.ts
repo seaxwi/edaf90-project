@@ -13,9 +13,9 @@ export class PresentQuestion{
         this.shuffle(this.answers);
     }
 
-    private shuffle(string[] list) {
-        for (var i = 0; i < list.length; i++) {
-            var j = Math.floor(Math.random() * list.length);
+    private shuffle(list : string[]) {
+        for (var i = list.length-1; i > 0; i--) {
+            var j = Math.floor(Math.random() * i+1);
             
             var temp = list[i];
             list[i] = list[j];
