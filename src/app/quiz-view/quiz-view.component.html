@@ -3,7 +3,7 @@
         <h3 [innerHTML]="question.question"></h3>
         <div class="buttons">
             <div class = "button-container" *ngFor = "let answer of question.answers">
-                <button type="button" [value]="answer" (click)="submitAnswer($event.target)" class ="btn" [innerHTML]="answer"></button>
+                <button type="button" [value]="answer" (click)="submitAnswer($event)" class ="btn" [innerHTML]="answer"></button>
             </div>
         </div>
         <button [disabled]="!questionAnswered" (click)="next()" class="next">Next ›</button>

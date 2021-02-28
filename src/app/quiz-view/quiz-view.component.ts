@@ -27,14 +27,14 @@ export class QuizViewComponent implements OnInit {
     return id !== this.currentQuestionId;
   }
 
-  submitAnswer(target : EventTarget){
+  submitAnswer(event){
     if (!this.questionAnswered) {
       this.questionAnswered = true;
 
-      if((target as HTMLInputElement).value === this.questions[this.currentQuestionId].correct_answer) {
-        console.log("Correct Answer");
+      if(event.target.value === this.questions[this.currentQuestionId].correct_answer) {
+        event.target.setAttribute("class", "btn btn-correct");
       } else {
-        console.log("Incorrect Answer");
+        event.target.setAttribute("class", "btn btn-incorrect");
       }
     }
   }

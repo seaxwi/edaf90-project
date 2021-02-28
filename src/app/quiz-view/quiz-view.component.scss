@@ -13,9 +13,7 @@
 }
 
 .button-container {
-    background-color: #f4f4f4;
     border-radius: 10px;
-    border: 1px solid #c3c3c3;
     height: 100px;
     text-align: center;
 }
@@ -25,6 +23,19 @@
     width: 100%;
     height: 100%;
     font-size: 20px;
+    background-color: #f4f4f4;
+    border: 2px solid #c3c3c3;
+}
+
+.btn-correct {
+    background-color: #79da23 !important;
+    border: 2px solid #5da71b !important;
+}
+
+.btn-incorrect {
+    background-color: #ff6262 !important;
+    border: 2px solid #ff1414 !important;
+    color: #fff;
 }
 
 .next {
