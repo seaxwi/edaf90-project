@@ -1,8 +1,11 @@
 <div class = "question-container" *ngFor = "let question of presentQuestions">
     <div [hidden] = "shouldShow(question.id)">
         <h3 [innerHTML]="question.question"></h3>
-        <div class = "button-container" *ngFor = "let answer of question.answers">
-            <label (click)="submitAnswer(answer)" class = "btn btn-primary"[innerHTML]="answer"></label>
+        <div class="buttons">
+            <div class = "button-container" *ngFor = "let answer of question.answers">
+                <button type="button" [value]="answer" (click)="submitAnswer($event.target)" class ="btn" [innerHTML]="answer"></button>
+            </div>
         </div>
+        <button [disabled]="!questionAnswered" (click)="next()" class="next">Next ›</button>
     </div>
 </div>

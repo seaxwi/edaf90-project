@@ -20,15 +20,27 @@ export class QuizViewComponent implements OnInit {
   presentQuestions = [];                //presentQuestions används för att smidigare rendera frågor och svarsalternativ, här vet vi inte vad som är rätt och fel svar
   questions = [];                       //questions är datan vi fetchar, vi kan hålla koll på all information kring frågan här¨
   currentQuestionId = 0;
+  questionAnswered = false;
 
   shouldShow(id){
     //console.log(`Question ${id} is ${id===this.currentQuestionId? "not hidden": "hidden"}`)
     return id!==this.currentQuestionId;
   }
 
-  submitAnswer(selectedAnswer: String){
-    console.log( ` You selected ${selectedAnswer} which is ${this.questions[this.currentQuestionId].correct_answer === selectedAnswer? "correct": "incorrect"}`)
-    this.currentQuestionId+=1
+  submitAnswer(target : EventTarget){
+    //console.log( ` You selected ${selectedAnswer} which is ${this.questions[this.currentQuestionId].correct_answer === selectedAnswer? "correct": "incorrect"}`)
+    //this.currentQuestionId+=1
+    this.questionAnswered = true;
+    if((target as HTMLInputElement).value === this.questions[this.currentQuestionId].correct_answer) {
+      console.log("Correct Answer");
+    } else {
+      console.log("Incorrect Answer");
+    }
+  }
+
+  next() {
+    this.currentQuestionId += 1;
+    this.questionAnswered = false;
 
     if(this.currentQuestionId === this.quiz.nbrQuestions){
       console.log("All questions answered!")
