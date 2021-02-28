@@ -24,17 +24,18 @@ export class QuizViewComponent implements OnInit {
 
   shouldShow(id){
     //console.log(`Question ${id} is ${id===this.currentQuestionId? "not hidden": "hidden"}`)
-    return id!==this.currentQuestionId;
+    return id !== this.currentQuestionId;
   }
 
   submitAnswer(target : EventTarget){
-    //console.log( ` You selected ${selectedAnswer} which is ${this.questions[this.currentQuestionId].correct_answer === selectedAnswer? "correct": "incorrect"}`)
-    //this.currentQuestionId+=1
-    this.questionAnswered = true;
-    if((target as HTMLInputElement).value === this.questions[this.currentQuestionId].correct_answer) {
-      console.log("Correct Answer");
-    } else {
-      console.log("Incorrect Answer");
+    if (!this.questionAnswered) {
+      this.questionAnswered = true;
+
+      if((target as HTMLInputElement).value === this.questions[this.currentQuestionId].correct_answer) {
+        console.log("Correct Answer");
+      } else {
+        console.log("Incorrect Answer");
+      }
     }
   }
 
@@ -48,7 +49,7 @@ export class QuizViewComponent implements OnInit {
     }
   }
 
-  
+
 
   ngOnInit(): void {
     this.service.quiz$.subscribe(quiz => {
