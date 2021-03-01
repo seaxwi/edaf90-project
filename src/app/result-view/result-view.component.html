@@ -1,20 +1,18 @@
 <h1>Result</h1>
 
-<table>
-    
-    <tr>
-        <th>
-            Quiz form
-        </th>
-    </tr>
-    <tr *ngFor = "let row of formRows">
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-    </tr>    
-    
-</table>
+<h2>Settings</h2>
 
-<table>
+<ul>
+    <li>Category: {{category}}</li>
+    <li>Difficulty: {{difficulty}}</li>
+    <li>Number of questions: {{nbrQuestions}}</li>
+    <li>Final score: {{score * 100}}%</li>
+</ul>
+
+
+<h2>Questions</h2>
+
+<table class="table table-striped table-bordered table-sm">
     <tr>
         <th *ngFor = "let column of headers">
             {{column}}
@@ -27,5 +25,3 @@
     </tr>    
     
 </table>
-
-<div><b>Score:</b> {{score}}</div>

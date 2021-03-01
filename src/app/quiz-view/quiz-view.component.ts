@@ -55,14 +55,16 @@ export class QuizViewComponent implements OnInit {
       //TODO Route till sammanfattning/resultat?
 
       // Saving results with localStorage
-      var percentScore = this.score / this.quiz.nbrQuestions;
+      var score = this.score / this.quiz.nbrQuestions;
       var highscores = JSON.parse(localStorage.getItem("highscores"));
+      var date = new Date();
+      var dateString = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
       var newResult = {
-        "dateTime": new Date().toDateString(),
+        "dateTime": new Date().toISOString(),
         "difficulty": this.quiz.difficulty,
         "category": this.quiz.category,
         "nbrQuestions": this.quiz.nbrQuestions,
-        "score": (percentScore*100).toString() +'%',
+        "score": score,
         "questions": this.presentQuestions
       }
       if (highscores === null){
