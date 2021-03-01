@@ -50,7 +50,7 @@ export class QuizViewComponent implements OnInit {
     this.questionAnswered = false;
 
     if(this.currentQuestionId === this.quiz.nbrQuestions){
-      localStorage.clear()
+      //localStorage.clear()
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
 
