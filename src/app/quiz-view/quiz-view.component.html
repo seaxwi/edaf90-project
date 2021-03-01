@@ -1,5 +1,6 @@
 <div class = "question-container" *ngFor = "let question of presentQuestions">
     <div [hidden] = "shouldShow(question.id)">
+        <p>{{(currentQuestionId+1) + "/" + quiz.nbrQuestions}}</p>
         <h3 [innerHTML]="question.question"></h3>
         <div class="buttons">
             <div class = "button-container" *ngFor = "let answer of question.answers">
