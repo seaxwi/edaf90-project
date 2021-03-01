@@ -5,6 +5,9 @@ import { QuizMessageService } from '../quiz-message.service';
 import { filter } from 'minimatch';
 import { PresentQuestion } from './presentQuestion';
 import { utf8Encode } from '@angular/compiler/src/util';
+import { convertCompilerOptionsFromJson } from 'typescript';
+import { Router} from '@angular/router';
+//import { ResultViewComponent } from '../result-view/result-view';
 
 
 @Component({
@@ -14,7 +17,7 @@ import { utf8Encode } from '@angular/compiler/src/util';
 })
 export class QuizViewComponent implements OnInit {
 
-  constructor(private http: HttpClient, private service : QuizMessageService) { }
+  constructor(private http: HttpClient, private service : QuizMessageService, private router: Router) { }
 
   private quiz = new QuizForm(0,"","","");
   presentQuestions = [];                //presentQuestions används för att smidigare rendera frågor och svarsalternativ, här vet vi inte vad som är rätt och fel svar
@@ -46,6 +49,7 @@ export class QuizViewComponent implements OnInit {
     this.currentQuestionId += 1;
     this.questionAnswered = false;
 
+    
     if(this.currentQuestionId === this.quiz.nbrQuestions){
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
@@ -64,7 +68,10 @@ export class QuizViewComponent implements OnInit {
       localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
       console.log("localStorage:")
       console.log(JSON.parse(localStorage.getItem("highscores")));
+
+      this.router.navigate(['../result']);
     }
+
   }
 
 
