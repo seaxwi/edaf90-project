@@ -32,6 +32,7 @@ export class QuizViewComponent implements OnInit {
     if (!this.questionAnswered) {
       this.questionAnswered = true;
 
+      this.presentQuestions[this.currentQuestionId].submittedAnswer = event.target.value;
       if(event.target.value === this.questions[this.currentQuestionId].correct_answer) {
         event.target.setAttribute("class", "btn btn-correct");
         this.score++;
@@ -51,12 +52,18 @@ export class QuizViewComponent implements OnInit {
 
       // Saving results with localStorage
       var percentScore = this.score / this.quiz.nbrQuestions;
-      var highscores = JSON.parse(localStorage.getItem("highschores"));
-      var newScore = {
-        "dateTime": 1010,
-        "score": percentScore
+      var highscores = JSON.parse(localStorage.getItem("highscores"));
+      var newResult = {
+        "dateTime": new Date().toDateString(),
+        "difficulty": this.quiz.difficulty,
+        "category": this.quiz.category,
+        "nbrQuestions": this.quiz.nbrQuestions,
+        "score": percentScore,
+        "questions": this.presentQuestions
       }
-      localStorage.setItem("highscores", JSON.stringify([...highscores, newScore]));
+      localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
+      console.log("localStorage:")
+      console.log(JSON.parse(localStorage.getItem("highscores")));
     }
   }
 
