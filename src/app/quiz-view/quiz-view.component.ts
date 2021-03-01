@@ -21,6 +21,7 @@ export class QuizViewComponent implements OnInit {
   questions = [];                       //questions är datan vi fetchar, vi kan hålla koll på all information kring frågan här¨
   currentQuestionId = 0;
   questionAnswered = false;
+  score = 0;
 
   shouldShow(id){
     //console.log(`Question ${id} is ${id===this.currentQuestionId? "not hidden": "hidden"}`)
@@ -33,6 +34,7 @@ export class QuizViewComponent implements OnInit {
 
       if(event.target.value === this.questions[this.currentQuestionId].correct_answer) {
         event.target.setAttribute("class", "btn btn-correct");
+        this.score++;
       } else {
         event.target.setAttribute("class", "btn btn-incorrect");
       }
@@ -46,6 +48,15 @@ export class QuizViewComponent implements OnInit {
     if(this.currentQuestionId === this.quiz.nbrQuestions){
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
+
+      // Saving results with localStorage
+      var percentScore = this.score / this.quiz.nbrQuestions;
+      var highscores = JSON.parse(localStorage.getItem("highschores"));
+      var newScore = {
+        "dateTime": 1010,
+        "score": percentScore
+      }
+      localStorage.setItem("highscores", JSON.stringify([...highscores, newScore]));
     }
   }
 
