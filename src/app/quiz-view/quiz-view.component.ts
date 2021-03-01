@@ -5,6 +5,9 @@ import { QuizMessageService } from '../quiz-message.service';
 import { filter } from 'minimatch';
 import { PresentQuestion } from './presentQuestion';
 import { utf8Encode } from '@angular/compiler/src/util';
+import { convertCompilerOptionsFromJson } from 'typescript';
+import { Router} from '@angular/router';
+//import { ResultViewComponent } from '../result-view/result-view';
 
 
 @Component({
@@ -14,13 +17,14 @@ import { utf8Encode } from '@angular/compiler/src/util';
 })
 export class QuizViewComponent implements OnInit {
 
-  constructor(private http: HttpClient, private service : QuizMessageService) { }
+  constructor(private http: HttpClient, private service : QuizMessageService, private router: Router) { }
 
   private quiz = new QuizForm(0,"","","");
   presentQuestions = [];                //presentQuestions används för att smidigare rendera frågor och svarsalternativ, här vet vi inte vad som är rätt och fel svar
   questions = [];                       //questions är datan vi fetchar, vi kan hålla koll på all information kring frågan här¨
   currentQuestionId = 0;
   questionAnswered = false;
+  score = 0;
 
   shouldShow(id){
     //console.log(`Question ${id} is ${id===this.currentQuestionId? "not hidden": "hidden"}`)
@@ -31,6 +35,7 @@ export class QuizViewComponent implements OnInit {
     if (!this.questionAnswered) {
       this.questionAnswered = true;
 
+      this.presentQuestions[this.currentQuestionId].submittedAnswer = event.target.value;
       if(event.target.value !== this.questions[this.currentQuestionId].correct_answer) {
         event.target.setAttribute("class", "btn btn-incorrect");
       }
@@ -42,9 +47,34 @@ export class QuizViewComponent implements OnInit {
     this.questionAnswered = false;
 
     if(this.currentQuestionId === this.quiz.nbrQuestions){
+      //localStorage.clear()
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
+
+      // Saving results with localStorage
+      var score = this.score / this.quiz.nbrQuestions;
+      var highscores = JSON.parse(localStorage.getItem("highscores"));
+      var date = new Date();
+      var dateString = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+      var newResult = {
+        "dateTime": new Date().toISOString(),
+        "difficulty": this.quiz.difficulty,
+        "category": this.quiz.category,
+        "nbrQuestions": this.quiz.nbrQuestions,
+        "score": score,
+        "questions": this.presentQuestions
+      }
+      if (highscores === null){
+        localStorage.setItem("highscores", JSON.stringify([newResult]));
+      }else{ 
+        localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
+      }
+      console.log("localStorage:")
+      console.log(JSON.parse(localStorage.getItem("highscores")));
+
+      this.router.navigate(['../result']);
     }
+
   }
 
 

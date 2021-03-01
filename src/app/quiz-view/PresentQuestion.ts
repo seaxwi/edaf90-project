@@ -2,12 +2,13 @@
 export class PresentQuestion{
 
     public answers : string[];
+    public submittedAnswer : "";
 
     constructor(
         public question : string,
-        correctAnswer : string,
+        public correctAnswer : string,
         incorrectAnswers : string[],
-        public id : number
+        public id : number,
     ){
         this.answers = [...incorrectAnswers, correctAnswer];
         this.shuffle(this.answers);
