@@ -31,9 +31,7 @@ export class QuizViewComponent implements OnInit {
     if (!this.questionAnswered) {
       this.questionAnswered = true;
 
-      if(event.target.value === this.questions[this.currentQuestionId].correct_answer) {
-        event.target.setAttribute("class", "btn btn-correct");
-      } else {
+      if(event.target.value !== this.questions[this.currentQuestionId].correct_answer) {
         event.target.setAttribute("class", "btn btn-incorrect");
       }
     }
