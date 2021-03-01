@@ -4,6 +4,7 @@ import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuizViewComponent } from './quiz-view/quiz-view.component'
+import { ResultViewComponent } from './result-view/result-view.component'
 
 
 const routes: Routes = [{
@@ -17,6 +18,9 @@ const routes: Routes = [{
 },
 {
   path: 'highscores', component: HighscoresComponent
+},
+{
+  path: 'result', component: ResultViewComponent
 },
 {
   path: '**', component: PageNotFoundComponent

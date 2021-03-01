@@ -1,1 +1,14 @@
-<p>result-view works!</p>
+<h1>Result</h1>
+
+<table>
+    <tr>
+        <th *ngFor = "let column of headers">
+            {{column}}
+        </th>
+    </tr>
+    <tr *ngFor = "let row of rows">
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>    
+</table>

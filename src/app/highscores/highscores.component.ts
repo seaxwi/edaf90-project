@@ -9,29 +9,25 @@ export class HighscoresComponent implements OnInit {
   headers = ["dateTime", "score"];
   rows = [];
 
-  constructor() {
-    let newScore = {
-      "dateTime" : "1",
-      "score" : "Rahul",
-    }
-    this.rows.push(newScore);
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    /* 
     console.log("init");
-    this.rows = JSON.parse(localStorage.getItem("highscores"));
+    
     if (true) {
       this.rows = [];
     }
+    /*
     var newScore = {
       "dateTime" : "1",
       "score" : "Rahul",
     }
     this.rows.push(newScore);
-    console.log("GOT HIGHSCORES");
-    console.log(this.rows);
+
+    localStorage.setItem("highscores", JSON.stringify([this.rows]));
     */
+    this.rows = JSON.parse(localStorage.getItem("highscores"));
+    console.log(JSON.stringify(this.rows));
   }
 
 }

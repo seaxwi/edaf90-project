@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { QuizViewComponent } from './quiz-view/quiz-view.component';
 import { QuizMessageService } from './quiz-message.service';
+import { ResultViewComponent } from './result-view/result-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { QuizMessageService } from './quiz-message.service';
     HighscoresComponent,
     PageNotFoundComponent,
     QuizFormComponent,
-    QuizViewComponent
+    QuizViewComponent,
+    ResultViewComponent
   ],
   imports: [
     BrowserModule,
