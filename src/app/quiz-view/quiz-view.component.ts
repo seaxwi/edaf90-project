@@ -49,8 +49,8 @@ export class QuizViewComponent implements OnInit {
     this.currentQuestionId += 1;
     this.questionAnswered = false;
 
-    
     if(this.currentQuestionId === this.quiz.nbrQuestions){
+      localStorage.clear()
       console.log("All questions answered!")
       //TODO Route till sammanfattning/resultat?
 
@@ -62,10 +62,14 @@ export class QuizViewComponent implements OnInit {
         "difficulty": this.quiz.difficulty,
         "category": this.quiz.category,
         "nbrQuestions": this.quiz.nbrQuestions,
-        "score": percentScore,
+        "score": (percentScore*100).toString() +'%',
         "questions": this.presentQuestions
       }
-      localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
+      if (highscores === null){
+        localStorage.setItem("highscores", JSON.stringify([newResult]));
+      }else{ 
+        localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
+      }
       console.log("localStorage:")
       console.log(JSON.parse(localStorage.getItem("highscores")));
 

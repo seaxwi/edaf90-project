@@ -1,6 +1,20 @@
 <h1>Result</h1>
 
 <table>
+    
+    <tr>
+        <th>
+            Quiz form
+        </th>
+    </tr>
+    <tr *ngFor = "let row of formRows">
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+    </tr>    
+    
+</table>
+
+<table>
     <tr>
         <th *ngFor = "let column of headers">
             {{column}}
@@ -11,4 +25,7 @@
         <td>{{row[1]}}</td>
         <td>{{row[2]}}</td>
     </tr>    
+    
 </table>
+
+<div><b>Score:</b> {{score}}</div>

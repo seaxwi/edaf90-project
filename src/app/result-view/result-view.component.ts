@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./result-view.component.scss']
 })
 export class ResultViewComponent implements OnInit {
-  headers = ["question", "correct answer", "answer"];
+  //formHeaders = ["Number of Questions", "Category", "Difficulty"];
+  formRows = [];
+  headers = ["Question", "Correct Answer", "Answer"];
   rows = [];
+  score = 0;
 
 
   constructor() { }
@@ -15,6 +18,15 @@ export class ResultViewComponent implements OnInit {
   ngOnInit(): void {
     console.log("result init");
     var result = JSON.parse(localStorage.getItem("highscores"))[0];
+
+
+    var questions = result.questions;
+    this.formRows.push(["Number of questions: ", result.nbrQuestions])
+    this.formRows.push(["Category: ", result.category])
+    this.formRows.push(["Difficulty: ", result.difficulty])
+
+    this.score = result.score;
+
     var questions = result.questions;
     for (var i = 0; i < result["nbrQuestions"]; i++) {
       console.log(this.rows.push([questions[i].question, questions[i].correctAnswer, questions[i].submittedAnswer]));
