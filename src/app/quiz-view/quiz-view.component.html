@@ -6,6 +6,6 @@
                 <button type="button" [value]="answer" (click)="submitAnswer($event)" class ="btn" [innerHTML]="answer"></button>
             </div>
         </div>
-        <button [disabled]="!questionAnswered" (click)="next()" class="next">{{ question.id !== presentQuestions.length - 1 ? 'Next ›' : 'Finish Quiz ›' }}</button>
+        <button [disabled]="!questionAnswered" (click)="next()" class="next">{{ question.id !== presentQuestions.length - 1 ? 'Next ›' : 'Finish Quiz ››' }}</button>
     </div>
 </div>
