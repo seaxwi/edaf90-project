@@ -34,10 +34,11 @@ export class QuizViewComponent implements OnInit {
   submitAnswer(event){
     if (!this.questionAnswered) {
       this.questionAnswered = true;
-
       this.presentQuestions[this.currentQuestionId].submittedAnswer = event.target.value;
       if(event.target.value !== this.questions[this.currentQuestionId].correct_answer) {
         event.target.setAttribute("class", "btn btn-incorrect");
+      } else{
+        this.score +=1;
       }
     }
   }
