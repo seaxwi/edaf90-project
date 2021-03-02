@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-page-not-found',
-  templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+  selector: 'app-error-view',
+  templateUrl: './error-view.component.html',
+  styleUrls: ['./error-view.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class ErrorViewComponent implements OnInit {
 
   @Input() errorMessage: string = "Page not Found";
   @Input() errorCode: number = 404;

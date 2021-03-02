@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorViewComponent } from './error-view/error-view.component';
 import { QuizViewComponent } from './quiz-view/quiz-view.component'
 import { ResultViewComponent } from './result-view/result-view.component'
 
@@ -23,7 +23,7 @@ const routes: Routes = [{
   path: 'result', component: ResultViewComponent
 },
 {
-  path: '**', component: PageNotFoundComponent
+  path: '**', component: ErrorViewComponent
 }];
 
 @NgModule({

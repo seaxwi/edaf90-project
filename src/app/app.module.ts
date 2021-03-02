@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorViewComponent } from './error-view/error-view.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { QuizViewComponent } from './quiz-view/quiz-view.component';
 import { QuizMessageService } from './quiz-message.service';
@@ -19,7 +19,7 @@ import { ResultViewComponent } from './result-view/result-view.component';
     AppComponent,
     NewQuizComponent,
     HighscoresComponent,
-    PageNotFoundComponent,
+    ErrorViewComponent,
     QuizFormComponent,
     QuizViewComponent,
     ResultViewComponent
