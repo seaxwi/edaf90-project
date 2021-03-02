@@ -26,6 +26,10 @@ export class QuizViewComponent implements OnInit {
   questionAnswered = false;
   score = 0;
 
+  showError = false;
+  errorCode = 0;
+  errorMessage = "";
+
   shouldShow(id){
     //console.log(`Question ${id} is ${id===this.currentQuestionId? "not hidden": "hidden"}`)
     return id !== this.currentQuestionId;
@@ -67,7 +71,7 @@ export class QuizViewComponent implements OnInit {
       }
       if (highscores === null){
         localStorage.setItem("highscores", JSON.stringify([newResult]));
-      }else{ 
+      }else{
         localStorage.setItem("highscores", JSON.stringify([newResult, ...highscores]));
       }
       console.log("localStorage:")
@@ -85,14 +89,16 @@ export class QuizViewComponent implements OnInit {
       this.quiz = quiz;
     });
     this.http.get<any>(this.quiz.url).subscribe((fetchedData) => {
-      /*
-      var txt = document.createElement("textarea");
-      txt.innerHTML = fetchedData;
-      fetchedData = txt.value;
-      */
-      this.questions = fetchedData.results;
-      this.presentQuestions = fetchedData.results.map(q => new PresentQuestion(q.question, q.correct_answer, q.incorrect_answers, this.idCounter++));
-      console.log(this.presentQuestions);
+      if (fetchedData.response_code === 1) {
+        this.errorCode = fetchedData.response_code;
+        this.errorMessage = "Not enough questions matching your settings"
+        this.showError = true;
+      }
+      else {
+        this.questions = fetchedData.results;
+        this.presentQuestions = fetchedData.results.map(q => new PresentQuestion(q.question, q.correct_answer, q.incorrect_answers, this.idCounter++));
+        console.log(this.presentQuestions);
+      }
     });
 
   }

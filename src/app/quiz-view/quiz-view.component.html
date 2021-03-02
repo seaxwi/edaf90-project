@@ -4,10 +4,12 @@
         <h3 [innerHTML]="question.question"></h3>
         <div class="buttons">
             <div class = "button-container" *ngFor = "let answer of question.answers">
-                <button type="button" [value]="answer" (click)="submitAnswer($event)" [innerHTML]="answer" [ngClass]="{'btn': true, 
+                <button type="button" [value]="answer" (click)="submitAnswer($event)" [innerHTML]="answer" [ngClass]="{'btn': true,
                 'btn-correct': questionAnswered && answer === this.questions[question.id].correct_answer}"></button>
             </div>
         </div>
         <button [disabled]="!questionAnswered" (click)="next()" class="next">{{ question.id !== presentQuestions.length - 1 ? 'Next ›' : 'Finish Quiz ››' }}</button>
     </div>
 </div>
+
+<app-page-not-found [hidden]="!showError" [errorCode]="errorCode" [errorMessage]="errorMessage"></app-page-not-found>

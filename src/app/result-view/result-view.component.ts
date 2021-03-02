@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ResultViewComponent implements OnInit {
   //formHeaders = ["Number of Questions", "Category", "Difficulty"];
   formRows = [];
-  headers = ["Question", "Correct Answer", "Answer"];
+  headers = ["Question", "Answer", "Correct Answer"];
   rows = [];
   score = 0;
   category = "";
@@ -39,7 +39,7 @@ export class ResultViewComponent implements OnInit {
 
     var questions = result.questions;
     for (var i = 0; i < result["nbrQuestions"]; i++) {
-      console.log(this.rows.push([questions[i].question, questions[i].correctAnswer, questions[i].submittedAnswer]));
+      console.log(this.rows.push([questions[i].question, questions[i].submittedAnswer, questions[i].correctAnswer]));
     }
     console.log(JSON.stringify(this.rows));
   }
