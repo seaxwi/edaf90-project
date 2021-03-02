@@ -18,8 +18,10 @@ export class HighscoresComponent implements OnInit {
     var json = JSON.parse(localStorage.getItem("highscores"));
     console.log(json);
 
+    var json2 = this.sort(json);
+
     for(var i = 0; i < json.length; i++) {
-      var row = json[i];
+      var row = json2[i];
       var dateString = new Date(row["dateTime"]).toLocaleString();
       this.rows.push({
         dateTime: dateString,
@@ -30,6 +32,21 @@ export class HighscoresComponent implements OnInit {
   }
 
     console.log(JSON.stringify(this.rows));
+  }
+
+  sort(list){
+    for(var i = 0; i<list.length; i++){
+      var currentvalue = list[i];
+      var position = i;
+
+      while(position > 0 && list[position -1]["score"] < currentvalue["score"]){
+        list[position] = list[position-1];
+        position = position -1;
+      }
+      list[position] = currentvalue;
+    }
+    return list;
+
   }
 
 }
