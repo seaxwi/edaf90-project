@@ -10,23 +10,16 @@ export class PresentQuestion{
         incorrectAnswers : string[],
         public id : number,
     ){
-        this.answers = this.shuffle([...incorrectAnswers, correctAnswer]);
-        //this.shuffle(this.answers);
+        this.answers = this.shuffleAnswer(correctAnswer, incorrectAnswers);
     }
 
-    private shuffle(list : string[]) : string[] {
-        if(list.length > 2) {
-            for (var i = list.length-1; i > 0; i--) {
-                var j = Math.floor(Math.random() * i+1);
-                
-                var temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
+    private shuffleAnswer(correctAnswer : string, incorrectAnswers : string[]) : string[] {
+        let result = [correctAnswer, ...incorrectAnswers];
+        let index = Math.floor(Math.random() * result.length);
 
-            return list;
-        } else {
-            return ['True', 'False'];
-        }
+        let temp = result[0];
+        result[0] = result[index];
+        result[index] = temp;
+        return result;
     }
 }
