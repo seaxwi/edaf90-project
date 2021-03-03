@@ -2,3 +2,15 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.page-title {
+    @extend .display-1;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 0em;
+    padding-bottom: 0.1em;
+    margin-bottom: 0.25em;
+    border-bottom: 2.5px dotted rgb(129, 129, 129);
+    width: 100%;
+    display: block;
+}
