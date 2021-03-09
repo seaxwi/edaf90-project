@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewQuizComponent } from './new-quiz/new-quiz.component';
+import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { QuizViewComponent } from './quiz-view/quiz-view.component'
@@ -8,7 +8,7 @@ import { ResultViewComponent } from './result-view/result-view.component'
 
 
 const routes: Routes = [{
-  path: 'new-quiz', component: NewQuizComponent
+  path: 'new-quiz', component: QuizFormComponent
 },
 {
   path: 'quiz-view', component: QuizViewComponent

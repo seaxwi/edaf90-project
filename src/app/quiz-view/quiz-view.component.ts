@@ -7,6 +7,7 @@ import { PresentQuestion } from './presentQuestion';
 import { utf8Encode } from '@angular/compiler/src/util';
 import { convertCompilerOptionsFromJson } from 'typescript';
 import { Router} from '@angular/router';
+import { ErrorViewComponent } from '../error-view/error-view.component';
 //import { ResultViewComponent } from '../result-view/result-view';
 
 

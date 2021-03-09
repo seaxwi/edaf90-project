@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NewQuizComponent } from './new-quiz/new-quiz.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
@@ -17,7 +16,6 @@ import { ResultViewComponent } from './result-view/result-view.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NewQuizComponent,
     HighscoresComponent,
     ErrorViewComponent,
     QuizFormComponent,
