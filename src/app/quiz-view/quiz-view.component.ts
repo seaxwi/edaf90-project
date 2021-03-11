@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { QuizForm } from '../quiz-form/quiz-form';
 import { QuizMessageService } from '../quiz-message.service';
 import { filter } from 'minimatch';
-import { PresentQuestion } from './presentQuestion';
+import { PresentQuestion } from './PresentQuestion';
 import { utf8Encode } from '@angular/compiler/src/util';
 import { convertCompilerOptionsFromJson } from 'typescript';
 import { Router} from '@angular/router';
