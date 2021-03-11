@@ -18,17 +18,19 @@ export class HighscoresComponent implements OnInit {
     var json = JSON.parse(localStorage.getItem("highscores"));
     console.log(json);
 
-    var json2 = this.sort(json);
+    if(json !== null) {
+      var json2 = this.sort(json);
 
-    for(var i = 0; i < json.length; i++) {
-      var row = json2[i];
-      var dateString = new Date(row["dateTime"]).toLocaleString();
-      this.rows.push({
-        dateTime: dateString,
-        category: row["category"],
-        difficulty: row["difficulty"],
-        score: (row["score"] * 100).toString() + "%"
-      });
+      for(var i = 0; i < json.length; i++) {
+        var row = json2[i];
+        var dateString = new Date(row["dateTime"]).toLocaleString();
+        this.rows.push({
+          dateTime: dateString,
+          category: row["category"],
+          difficulty: row["difficulty"],
+          score: (row["score"] * 100).toString() + "%"
+        });
+      }
   }
 
     console.log(JSON.stringify(this.rows));
